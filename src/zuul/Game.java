@@ -43,7 +43,7 @@ public class Game {
 	 */
 	public Game() {
 		questions = new Question[15];
-		lessons = new Lesson[15];
+		lessons = new Lesson[10];
 		createRooms();
 		init();
 		parser = new Parser();
@@ -125,6 +125,7 @@ public class Game {
 			IO.addToFileByName("13", "A class A can inherit of 2 other classes ? F", IO.PossibleFiles.POO_QUESTION.getPath());
 			IO.addToFileByName("14", "A class A can inherit a class B if it call it's constructor by 'super()' ? T", IO.PossibleFiles.POO_QUESTION.getPath());
 			IO.addToFileByName("15", "Two class can't inherit the same class ? F", IO.PossibleFiles.POO_QUESTION.getPath());
+
 			IO.flushJSON();
 
 			IO.addToFileByName("1", "Welcome in this first POO Lesson.. Today we will learn about Java syntax.. If you write 'private' the field won't be accessible out of the class.. If you declare a variable of a certain type, you can't affect it another type.. Don't forget to add ';' at the end of every line of code.. This is it for this POO lesson, see you for another one..", IO.PossibleFiles.POO_LESSON.getPath());
@@ -159,13 +160,13 @@ public class Game {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		for(int i = 0; i < 15 ; i++){
-			questions[i] = new Question(i);
-			if(i%3==0){
-				lessons[i/3] = new Lesson(true, i/3);
+		for(int i = 0; i < 15; i++){
+			questions[i] = new Question(i+1);
+			if(i < 5){
+				lessons[i] = new Lesson(true, i+1);
+			}else if(i < 10){
+				lessons[i] = new Lesson(false, i-4);
 			}
-			lessons[4+(2*(i/3))+(i%3)] = new Lesson(false, (2*(i/3))+(i%3)-1);
 		}
 		for(Lesson l : lessons){
 			System.out.println(l.toString()+'\n');
