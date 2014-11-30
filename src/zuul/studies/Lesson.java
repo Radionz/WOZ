@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Created by user on 13/11/14.
+ * @author Nicolas Sarroche, Dorian Blanc
  */
 public class Lesson {
 
@@ -51,11 +51,14 @@ public class Lesson {
     }
 
     public String getSentence(int number){
-        return insts.get(number);
+    	if (insts.size()<=number) {
+    		this.done = true;
+    		return "END";
+		}else{
+			return insts.get(number);
+		}
     }
-    // Basic getters/setters //
 
-    // SKYPE = dorianblanc
 
     private void getLessonFromFile(String path){
         String body = null;

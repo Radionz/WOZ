@@ -3,7 +3,7 @@ package zuul.rooms;
 import java.util.ArrayList;
 
 /**
- * Created by user on 13/11/14.
+ * @author Nicolas Sarroche, Dorian Blanc
  */
 public class Library extends Room{
 

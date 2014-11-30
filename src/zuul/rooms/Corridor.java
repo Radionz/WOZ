@@ -2,8 +2,10 @@ package zuul.rooms;
 
 import java.util.ArrayList;
 
+import zuul.entities.items.Item;
+
 /**
- * Created by user on 13/11/14.
+ * @author Nicolas Sarroche, Dorian Blanc
  */
 public class Corridor extends Room{
 
@@ -34,11 +36,20 @@ public class Corridor extends Room{
     	return "Lights OFF !";
     }
 
-    public boolean isLite() {
-        return light;
-    }
-
     public void switchLight() {
         this.light = !this.light;
+    }
+    
+    @Override
+    public String getLongDescription() {
+    	if(light)
+    		return "You are " + description + " and the light is on.\n" + getItemString() + "\n" + getActionString() + "\n" + getExitString();
+    	return "You are " + description + " and the light is off.\n" + getActionString() + "\n" + getExitString();
+    }
+    
+    public boolean hasItem(Item item){
+    if(light)
+        return this.items.contains(item);
+    return false;
     }
 }

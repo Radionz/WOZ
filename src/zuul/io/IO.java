@@ -10,7 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Created by user on 25/11/14.
+ * @author Nicolas Sarroche, Dorian Blanc
  */
 public abstract class IO {
 

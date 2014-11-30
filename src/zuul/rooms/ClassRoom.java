@@ -2,10 +2,11 @@ package zuul.rooms;
 
 import java.util.ArrayList;
 
+import zuul.rooms.Room.Exits;
 import zuul.studies.Lesson;
 
 /**
- * Created by user on 13/11/14.
+ * @author Nicolas Sarroche, Dorian Blanc
  */
 public class ClassRoom extends Room{
 
@@ -23,18 +24,32 @@ public class ClassRoom extends Room{
     public ClassRoom(String description, boolean isPOO, int playerLevel) {
         super(description);
         this.sentenceNb = 0;
-        this.lesson = new Lesson(isPOO, playerLevel);
+        this.lesson = new Lesson(true, playerLevel);
         this.actions = new ArrayList<String>();
         actions.add("learn");
-        actions.add("nextSentence");
     }
     
     public String learn(){
-    	return displaySentences();
+    	String returned = new String();
+    	if (lesson.isPOO()) {
+			returned += "You have to learn the course to the bitter end.\n";
+		}
+    	actions.add("nextSentence");
+    	actions.remove("learn");
+    	return returned += displaySentences();
+    	
     }
     
     public String nextSentence(){
     	return displaySentences();
+    }
+    
+    public Room getExit(String direction) {
+        if (lesson.isDone()) {
+			return exits.get(Exits.getAnExit(direction));
+		}
+        displaySentences();
+        return null;
     }
 
     /**

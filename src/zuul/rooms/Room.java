@@ -1,7 +1,6 @@
 package zuul.rooms;
 
 import zuul.entities.items.Item;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -10,22 +9,22 @@ import java.util.HashMap;
 
 /**
  * Class rooms - a rooms in an adventure game.
- * <p/>
+ * 
  * This class is part of the "World of Zuul" application.
  * "World of Zuul" is a very simple, text based adventure game.
- * <p/>
+ * 
  * A "rooms" represents one location in the scenery of the game.  It is
  * connected to other rooms via exits.  For each existing exit, the rooms
  * stores a reference to the neighboring rooms.
+ * 
+ * @author Nicolas Sarroche, Dorian Blanc
  *
- * @author Michael Kölling and David J. Barnes
- * @version 2011.08.10
  */
 
 public class Room {
-    private String description;
-    private HashMap<Exits, Room> exits;        // stores exits of this rooms
-    private ArrayList<Item> items;
+    protected String description;
+    protected HashMap<Exits, Room> exits;        // stores exits of this rooms
+    protected ArrayList<Item> items;
     private ArrayList<Item> usableItems;
     protected ArrayList<String> actions;
 

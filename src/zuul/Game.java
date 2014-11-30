@@ -26,8 +26,7 @@ import java.io.IOException;
  * creates the parser and starts the game. It also evaluates and executes the
  * commands that the parser returns.
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2011.08.10
+ * @author Nicolas Sarroche, Dorian Blanc
  */
 
 public class Game {
@@ -306,6 +305,7 @@ public class Game {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println("What to pick up ?");
+			System.out.println(currentRoom.getItemString());
 			return;
 		}
 
@@ -343,6 +343,7 @@ public class Game {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println("What to do ?");
+			System.out.println(currentRoom.getActionString());
 			return;
 		}
 

@@ -5,7 +5,7 @@ import zuul.io.IO;
 import java.io.IOException;
 
 /**
- * Created by user on 13/11/14.
+ * @author Nicolas Sarroche, Dorian Blanc
  */
 public class Question {
 
@@ -21,7 +21,6 @@ public class Question {
         this.done = false;
         this.number = number;
         getLessonFromFile(IO.PossibleFiles.POO_QUESTION.getPath());
-
     }
 
     // Basic getters/setters //

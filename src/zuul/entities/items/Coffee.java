@@ -1,7 +1,9 @@
 package zuul.entities.items;
 
 import zuul.Game;
-
+/**
+ * @author Nicolas Sarroche, Dorian Blanc
+ */
 public class Coffee extends Item{
 
 	public Coffee() {
