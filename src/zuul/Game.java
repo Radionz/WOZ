@@ -160,7 +160,7 @@ public class Game {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		for(int i = 0; i < 15; i++){
+		for(int i = 0; i < 14; i++){
 			questions[i] = new Question(i+1);
 			if(i < 5){
 				lessons[i] = new Lesson(true, i+1);
