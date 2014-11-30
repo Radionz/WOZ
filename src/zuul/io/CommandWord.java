@@ -10,7 +10,7 @@ package zuul.io;
 public enum CommandWord {
     // A value for each command word along with its
     // corresponding user interface string.
-    GO("go"), DO("do"), QUIT("quit"), HELP("help"), UNKNOWN("?"), INVENTORY("inventory"), DROP("drop"), PICK("pick"), USE("use");
+    GO("go"), DO("do"), QUIT("quit"), HELP("help"), UNKNOWN("?"), INVENTORY("inventory"), DROP("drop"), PICK("pick"), USE("use"), ANSWER("answer");
 
     // The command string.
     private String commandString;

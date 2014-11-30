@@ -44,9 +44,6 @@ public class Question {
     public boolean isAnswer() {
         return answer;
     }
-    // Basic getters/setters //
-
-    // SKYPE = dorianblanc
 
     private void getLessonFromFile(String path){
         try {

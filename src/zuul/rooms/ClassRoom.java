@@ -2,6 +2,7 @@ package zuul.rooms;
 
 import java.util.ArrayList;
 
+import zuul.Game;
 import zuul.rooms.Room.Exits;
 import zuul.studies.Lesson;
 
@@ -46,6 +47,11 @@ public class ClassRoom extends Room{
     
     public Room getExit(String direction) {
         if (lesson.isDone()) {
+        	if (lesson.isPOO()) {
+				Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
+			}
+        	actions.add("learn");
+        	actions.remove("nextSentence");
 			return exits.get(Exits.getAnExit(direction));
 		}
         displaySentences();
