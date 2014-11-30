@@ -103,17 +103,50 @@ public class Game {
 	private void init(){
 		// TEST LESSON
 		try {
-			for(int k = 0; k < 15 ; k++){
-				IO.addToFileByName(String.valueOf(k), "Question " + k +" ? T", IO.PossibleFiles.POO_QUESTION.getPath());
-			}
+			//True false question
+			// IO.addToFileByName(String.valueOf(k), "Question " + k +" ? T", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("1", "Can 'private String name;' be access out of the class ? F",IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("2", "If I declare 'private String a;' can I do 'a = 3' ? F", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("3", "Does it compile :\n private String s\nprivate String b; ? F", IO.PossibleFiles.POO_QUESTION.getPath());
+
+			IO.addToFileByName("4", "If I declare a class A and B which extends A can I do 'A = new B();' ? T", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("5", "If I declare a class A and B which extends A can I do 'B = new A();' ? F", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("6", "If a class B extends a class A can this constructor be right \n" +
+					"B(){\n super(); \n} ? T", IO.PossibleFiles.POO_QUESTION.getPath());
+
+			IO.addToFileByName("7", "In 'private String s = new String(\"toto\");', String is the dynamic type of s ? T", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("8", "In 'private List l = new ArrayList<String>()', String is the dynamic type of s ? F", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("9", "In 'private List l = new ArrayList<String>()', ArrayList is the dynamic type of s ? F", IO.PossibleFiles.POO_QUESTION.getPath());
+
+			IO.addToFileByName("10", "Can A class 'public class Toto' can be instanciated ? T", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("11", "Can a class 'public abstract class Toto' be instanciate ? F", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("12", "An interface can be a static type ? T", IO.PossibleFiles.POO_QUESTION.getPath());
+
+			IO.addToFileByName("13", "A class A can inherit of 2 other classes ? F", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("14", "A class A can inherit a class B if it call it's constructor by 'super()' ? T", IO.PossibleFiles.POO_QUESTION.getPath());
+			IO.addToFileByName("15", "Two class can't inherit the same class ? F", IO.PossibleFiles.POO_QUESTION.getPath());
 			IO.flushJSON();
-			for(int k = 0; k < 5 ; k++){
-				IO.addToFileByName(String.valueOf(k), "POO_lesson :" + k +" . " +" suite POO_lesson :" + k , IO.PossibleFiles.POO_LESSON.getPath());
-			}
+
+			IO.addToFileByName("1", "Welcome in this first POO Lesson.. Today we will learn about Java syntax.. If you write 'private' the field won't be accessible out of the class.. If you declare a variable of a certain type, you can't affect it another type.. Don't forget to add ';' at the end of every line of code.. This is it for this POO lesson, see you for another one..", IO.PossibleFiles.POO_LESSON.getPath());
+			IO.addToFileByName("2", "Welcome in this second POO Lesson.. Today let me introduce you inheritance.. You can declare a class B which inherit another class A.. you write it this way 'A a= new B()'.. But this 'B = new A()' is wrong.. You have to add the instruction 'super();' in the constructor of B for the code to compile..  This is it for this POO lesson, see you for another one..", IO.PossibleFiles.POO_LESSON.getPath());
+			IO.addToFileByName("3", "Welcome in this third POO Lesson.. Today we will learn about static type.. Basically, we call 'static type' the type of the declaration.. if you declare 'A a= new C()', the 'static type' of a is A..  This is it for this short POO lesson about static type, see you for another one..", IO.PossibleFiles.POO_LESSON.getPath());
+			IO.addToFileByName("4", "Welcome in this fourth POO Lesson.. Today we will learn about some properties of instance.. Some class can be not instanciate.. if you set the constructor as 'private' of if you declare the class as 'abstract' you won't be able to instanciate an object for this class.. And just before you leave, remember that, an interface can be the static type for an object.. This is it for this POO lesson, see you for another one..", IO.PossibleFiles.POO_LESSON.getPath());
+			IO.addToFileByName("5", "Welcome in this fifth POO Lesson.. Today we will learn more about inheritance!. We learned that a class B can inherit from another class A.. By doing this an infinite number of class can inherit of class A.. But be careful, you can't inherit from two different classes !. Don't forget to add the instruction 'super()' to the constructor of the class.. This it if for this POO lesson..", IO.PossibleFiles.POO_LESSON.getPath());
 			IO.flushJSON();
-			for(int k = 0; k < 10 ; k++){
-				IO.addToFileByName(String.valueOf(k), "lesson :" + k +" . " +" suite lesson :" + k*k, IO.PossibleFiles.OTHER_LESSON.getPath());
-			}
+
+			IO.addToFileByName("1", "Welcome in this lesson of Biology !. Each type of protein is usually sent to a particular part of the cell. An important part of cell biology is the investigation of molecular mechanisms by which proteins are moved to different places inside cells or secreted from cells.\n Most proteins are synthesized by ribosomes in the rough endoplasmic reticulum (RER). Ribosomes contain the nucleic acid RNA, which assembles and joins amino acids to make proteins. They can be found alone or in groups within the cytoplasm as well as on the RER. This is it for this lesson on Cells", IO.PossibleFiles.OTHER_LESSON.getPath());
+			IO.addToFileByName("2", "Welcome in this lesson of Astrophysics !.The basic notion of an intra-universe wormhole is that it is a compact region of spacetime whose boundary is topologically trivial, but whose interior is not simply connected. Formalizing this idea leads to definitions such as the following, taken from Matt Visser's Lorentzian Wormholes.\n" +
+					"\n" +
+					"    If a Minkowski spacetime contains a compact region Ω, and if the topology of Ω is of the form Ω ~ R x Σ, where Σ is a three-manifold of the nontrivial topology, whose boundary has topology of the form ∂Σ ~ S2, and if, furthermore, the hypersurfaces Σ are all spacelike, then the region Ω contains a quasipermanent intra-universe wormhole.\n", IO.PossibleFiles.OTHER_LESSON.getPath());
+			IO.addToFileByName("3", "Welcome in this lesson of cooking !.    Heat oven to 180C/160C fan/gas 4 and grease 3 x 20cm sandwich tins, lining the bases with baking parchment and greasing the parchment too.\n" +
+					"    Beat the butter and sugar in a large bowl with an electric whisk until light and fluffy. Add the vanilla extract and the egg whites, a little at a time, beating until fully combined before adding more. Mix together the flour, cornflour and baking powder. Add the dry ingredients in 3 additions, alternating with the buttermilk. Divide the batter between the tins and level the tops.\n" +
+					"    Bake for 25-30 mins or until a skewer inserted into the middle comes out clean. Allow the cakes to cool in the tins for 10 mins, then turn out onto a wire rack, peeling off the parchment. Cool completely.\n" +
+					"    To make the buttercream, put the egg whites and sugar in a big bowl (the bowl of your tabletop mixer, if you have one) with the vanilla seeds and set over a pan of gently simmering water. Lightly whisk until the sugar has fully dissolved – you can test this by dipping two fingers into the bowl and rubbing them together; if you can’t feel any grains of sugar, the mixture is ready. Remove the bowl from the heat and keep whisking until a thick meringue has formed. Continue whisking until the meringue has cooled to room temperature, then slowly add in the butter, 1 tbsp at a time. By the time all the butter has been incorporated, the mixture should have transformed into a silky-smooth buttercream. If it hasn’t, continue to whisk until it does. If it still refuses to thicken, it may be the mixture is still too warm, so chill for 10 mins, then continue whisking. Add the vanilla extract and mix to combine.\n" +
+					"    To assemble the cake, place a sponge on a cake board or serving plate and top with a thin layer of buttercream. Repeat with the remaining cake layers and finish by spreading the remaining buttercream over the top and sides of the cake (see below). To get a smooth finish, use the edge of a palette knife, and drag carefully around the sides of the cake, smoothing out the buttercream. To decorate the cake, press the sides of it with the edible polka dot sprinkles creating a full border at the bottom with less and less the further up the cake you go. Best served within 2 days of baking, but the cake will keep for up to 4 days.\n This is it for this lesson for how to bake a cake.", IO.PossibleFiles.OTHER_LESSON.getPath());
+			IO.addToFileByName("4", "Welcome in this lesson of physics !.The theory of relativity transformed theoretical physics and astronomy during the 20th century. When first published, relativity superseded a 200-year-old theory of mechanics created primarily by Isaac Newton.\n" +
+					"\n" +
+					"In the field of physics, relativity improved the science of elementary particles and their fundamental interactions, along with ushering in the nuclear age. With relativity, cosmology and astrophysics predicted extraordinary astronomical phenomena such as neutron stars, black holes, and gravitational waves.", IO.PossibleFiles.OTHER_LESSON.getPath());
+			IO.addToFileByName("5","Welcome to this lesson of statistics .. Mathematical statistics is the application of mathematics to statistics, which was originally conceived as the science of the state — the collection and analysis of facts about a country: its economy, land, military, population, and so forth. Mathematical techniques used for this include mathematical analysis, linear algebra, stochastic analysis, differential equations, and measure-theoretic probability theory", IO.PossibleFiles.OTHER_LESSON.getPath());
 			IO.flushJSON();
 			/*
 			IO.addToFileByName(String.valueOf(1), "Is object class inheritable ? T", IO.PossibleFiles.POO_QUESTION.getPath());
@@ -305,7 +338,6 @@ public class Game {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println("What to pick up ?");
-			System.out.println(currentRoom.getItemString());
 			return;
 		}
 
@@ -343,7 +375,6 @@ public class Game {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println("What to do ?");
-			System.out.println(currentRoom.getActionString());
 			return;
 		}
 
