@@ -3,6 +3,7 @@ package zuul.rooms;
 import java.util.ArrayList;
 
 import zuul.studies.Exam;
+import zuul.studies.Question;
 
 /**
  * @author Nicolas Sarroche, Dorian Blanc
@@ -10,6 +11,7 @@ import zuul.studies.Exam;
 public class ExamRoom extends Room{
 
     private Exam exam;
+    private boolean examInProcess = false;
 
     /**
      * Create a rooms described "description". Initially, it has
@@ -26,10 +28,24 @@ public class ExamRoom extends Room{
     }
 
     public String doExam(){
-    	return exam.toString();
+    	actions.remove("doExam");
+    	examInProcess = true;
+    	System.out.println(exam.askQuestion());
+		return null;
     }
-
-    public Exam getExam() {
+    
+	public Exam getExam() {
         return exam;
     }
+	
+    public boolean isExamInProcess() {
+		return examInProcess;
+	}
+
+	public String answerQuestion(String answer) {
+		if(answer.equals(true))
+			return exam.answerQuestion(true);
+		else
+			return exam.answerQuestion(false);
+	}
 }

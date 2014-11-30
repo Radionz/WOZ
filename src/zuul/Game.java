@@ -257,6 +257,10 @@ public class Game {
 		case INVENTORY:
 			printInventory(command);
 			break;
+			
+		case ANSWER:
+			answerQuestion(command);
+			break;
 
 		case QUIT:
 			wantToQuit = quit(command);
@@ -265,9 +269,6 @@ public class Game {
 		}
 		return wantToQuit;
 	}
-
-
-
 
 	// implementations of user commands:
 	private void printInventory(Command command) {
@@ -339,6 +340,7 @@ public class Game {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println("What to pick up ?");
+			System.out.println(currentRoom.getItemString());
 			return;
 		}
 
@@ -376,6 +378,7 @@ public class Game {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println("What to do ?");
+			System.out.println(currentRoom.getActionString());
 			return;
 		}
 
@@ -384,6 +387,23 @@ public class Game {
 		// Try to use item in the current rooms.
 		System.out.println(currentRoom.doSomething(mehtod));
 	}
+	
+	private void answerQuestion(Command command) {
+		if (!command.hasSecondWord()) {
+			// if there is no second word, we don't know...
+			System.out.println("What to answer ? ('true' or 'false')");
+			return;
+		}
+
+		String answer = command.getSecondWord();
+
+		if((currentRoom instanceof ExamRoom)){
+			if (((ExamRoom) currentRoom).isExamInProcess() && (answer.equals("true") || answer.equals("false"))) {
+				System.out.println(((ExamRoom) currentRoom).answerQuestion(answer));
+			}
+		}
+	}
+	
 	/**
 	 * "Quit" was entered. Check the rest of the command to see whether we
 	 * really quit the game.
