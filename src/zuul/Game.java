@@ -12,6 +12,7 @@ import zuul.studies.Lesson;
 import zuul.studies.Question;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * This class is the main class of the "World of Zuul" application.
@@ -100,11 +101,13 @@ public class Game {
 	}
 
 
-	private void init(){
+	private void init() {
 		// TEST LESSON
+		/*
 		try {
 			//True false question
 			// IO.addToFileByName(String.valueOf(k), "Question " + k +" ? T", IO.PossibleFiles.POO_QUESTION.getPath());
+
 			IO.addToFileByName("1", "Can 'private String name;' be access out of the class ? F",IO.PossibleFiles.POO_QUESTION.getPath());
 			IO.addToFileByName("2", "If I declare 'private String a;' can I do 'a = 3' ? F", IO.PossibleFiles.POO_QUESTION.getPath());
 			IO.addToFileByName("3", "Does it compile :\n private String s\nprivate String b; ? F", IO.PossibleFiles.POO_QUESTION.getPath());
@@ -149,29 +152,23 @@ public class Game {
 					"In the field of physics, relativity improved the science of elementary particles and their fundamental interactions, along with ushering in the nuclear age. With relativity, cosmology and astrophysics predicted extraordinary astronomical phenomena such as neutron stars, black holes, and gravitational waves.", IO.PossibleFiles.OTHER_LESSON.getPath());
 			IO.addToFileByName("5","Welcome to this lesson of statistics .. Mathematical statistics is the application of mathematics to statistics, which was originally conceived as the science of the state — the collection and analysis of facts about a country: its economy, land, military, population, and so forth. Mathematical techniques used for this include mathematical analysis, linear algebra, stochastic analysis, differential equations, and measure-theoretic probability theory", IO.PossibleFiles.OTHER_LESSON.getPath());
 			IO.flushJSON();
-			/*
-			IO.addToFileByName(String.valueOf(1), "Is object class inheritable ? T", IO.PossibleFiles.POO_QUESTION.getPath());
-			IO.addToFileByName(String.valueOf(2), "is a class abstract instanciable ? F", IO.PossibleFiles.POO_QUESTION.getPath());
-			IO.addToFileByName(String.valueOf(3), "Do you like coffee ? T", IO.PossibleFiles.POO_QUESTION.getPath());
-			 */
-			//IO.flushJSON();
 
-			//IO.addToFileByName(String.valueOf(1), "Hello everyone. Today we're gonna learn about class descriptor. Really easy. See ya !", IO.PossibleFiles.POO_LESSON.getPath());
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		for(int i = 0; i < 14; i++){
-			questions[i] = new Question(i+1);
-			if(i < 5){
-				lessons[i] = new Lesson(true, i+1);
-			}else if(i < 10){
-				lessons[i] = new Lesson(false, i-4);
+		}*/
+			for (int i = 0; i < 15; i++) {
+				questions[i] = new Question(i + 1);
+				if (i < 5) {
+					lessons[i] = new Lesson(true, i + 1);
+				} else if (i < 10) {
+					lessons[i] = new Lesson(false, i - 4);
+				}
+			}
+			for (Lesson l : lessons) {
+				System.out.println(l.toString() + '\n');
 			}
 		}
-		for(Lesson l : lessons){
-			System.out.println(l.toString()+'\n');
-		}
-	}
+
 
 	/**
 	 * Main play routine. Loops until end of play.
@@ -308,7 +305,15 @@ public class Game {
 
 		if (nextRoom == null) {
 			System.out.println("There is no door!");
-		} else {
+		}else if(nextRoom instanceof Library && !((Library)nextRoom).checkForschedule()){
+			System.out.println("You can't access to Library now ! It's close ..");
+		}else if(nextRoom instanceof LunchRoom && ((LunchRoom)nextRoom).isForced()){
+			((LunchRoom)nextRoom).playBabyfoot(player);
+			currentRoom = nextRoom;
+			System.out.println(currentRoom.getLongDescription());
+
+		}
+		else {
 			currentRoom = nextRoom;
 			System.out.println(currentRoom.getLongDescription());
 		}

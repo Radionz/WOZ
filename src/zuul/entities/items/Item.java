@@ -1,5 +1,7 @@
 package zuul.entities.items;
 
+import java.util.ArrayList;
+
 /**
  * @author Nicolas Sarroche, Dorian Blanc
  */
@@ -49,5 +51,6 @@ public class Item {
         if (((Item) object).name.equals(this.name)){ return true; }
         return false;
     }
+    
 
 }

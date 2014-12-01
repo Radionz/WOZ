@@ -2,8 +2,10 @@ package zuul.entities;
 
 import zuul.entities.items.Item;
 import zuul.rooms.Room;
+import zuul.studies.Lesson;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author Nicolas Sarroche, Dorian Blanc
@@ -15,8 +17,11 @@ public class Player {
     private int energy;
     private int currentPOOLevel;
 
+    private ArrayList<Lesson> knowledges;
+
     public Player(String name, Item item){
         this.name = name;
+        this.knowledges = new ArrayList<>(10);
         this.inventory = new ArrayList<>(100);
         this.inventory.add(item);
         this.currentPOOLevel = 0;
@@ -161,4 +166,16 @@ public class Player {
     }
 
 
+    public ArrayList<Lesson> getKnowledges() {
+        return knowledges;
+    }
+
+    public void forgetALesson(){
+        int k = new Random().nextInt(this.knowledges.size());
+        this.knowledges.remove(k);
+    }
+
+    public void learn(Lesson l){
+        this.knowledges.add(l);
+    }
 }

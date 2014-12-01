@@ -1,6 +1,9 @@
 package zuul.rooms;
 
+import zuul.entities.Player;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author Nicolas Sarroche, Dorian Blanc
@@ -26,7 +29,13 @@ public class LunchRoom extends Room{
     	return "WOW drinkCoffee !";
     }
     
-    public String playBabyfoot(){
-    	return "WOW playBabyfoot !";
+    public String playBabyfoot(Player player){
+    	player.forgetALesson();
+        return "WOW amazing babyfoot play !";
+    }
+
+    public boolean isForced(){
+        int random = new Random().nextInt(5);
+        return random == 1;
     }
 }

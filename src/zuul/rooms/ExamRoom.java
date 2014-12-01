@@ -24,13 +24,14 @@ public class ExamRoom extends Room{
         super(description);
         this.exam = new Exam();
         this.actions = new ArrayList<String>();
-        actions.add("exam");
+        actions.add("doExam");
     }
 
-    public String exam(){
+    public String doExam(){
+    	actions.remove("doExam");
     	examInProcess = true;
-    	actions.remove("exam");
-    	return exam.askQuestion();
+    	System.out.println(exam.askQuestion());
+		return null;
     }
     
 	public Exam getExam() {
