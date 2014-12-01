@@ -33,6 +33,7 @@ public class Player {
     public Player(String playerName) {
     	this.name = playerName;
         this.knowledges = new ArrayList<>(10);
+        this.abilities = new ArrayList<>(10);
         this.inventory = new ArrayList<>(100);
         this.currentPOOLevel = 0;
 	}

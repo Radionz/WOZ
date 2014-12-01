@@ -48,6 +48,7 @@ public class LabRoom extends Room{
             returned = lab.answerQuestion(false);
         
         if (returned.startsWith("Lab done")) {
+        	actions.add("lab");
             labInProcess = false;
         }
         return returned;
@@ -74,14 +75,15 @@ public class LabRoom extends Room{
     public Room getExit(String direction) {
         if (lab.getSuccess() || actions.contains("lab")) {
 
-            Game.getPlayer().improveAbilities(lab);
-            Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
+        	if (lab.getSuccess()) {
+        		Game.getPlayer().improveAbilities(lab);
+                Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
+			}
 
-            if (!actions.contains("learn")) {
-                actions.add("learn");
+            if (!actions.contains("lab")) {
+                actions.add("lab");
             }
 
-            actions.remove("nextSentence");
             return exits.get(Exits.getAnExit(direction));
         }
         return null;
