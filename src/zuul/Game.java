@@ -45,6 +45,7 @@ public class Game {
 	public Game() {
 		questions = new Question[15];
 		lessons = new Lesson[10];
+		player = new Player("", new Item(""));
 		init();
 		createRooms();
 		parser = new Parser();
@@ -176,10 +177,12 @@ public class Game {
 	 * Main play routine. Loops until end of play.
 	 */
 	public void play() {
+		String playerName = getPlayerName();
 		// TEST //
 		Item item = new Item("an empty beer can", 0);
 		//-TEST-//
-		this.player = new Player(getPlayerName(), item);
+		player = new Player(playerName, item);
+
 		printWelcome();
 
 		// Enter the main command loop. Here we repeatedly read commands and
@@ -410,6 +413,10 @@ public class Game {
 			}
 			else
 				System.out.println("There is currently no exam or your answer in not correct ('true' or 'false')");
+		}else if((currentRoom instanceof LabRoom)){
+			if (((LabRoom) currentRoom).isLabInProcess() && (answer.equals("true") || answer.equals("false"))) {
+				System.out.println(((LabRoom) currentRoom).answerQuestion(answer));
+			}
 		}
 		else
 			System.out.println("You are not in the examroom");
