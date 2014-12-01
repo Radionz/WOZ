@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import zuul.Game;
+import zuul.rooms.Room.Exits;
 import zuul.studies.Exam;
 import zuul.studies.Question;
 
@@ -42,12 +44,32 @@ public class ExamRoom extends Room{
     public boolean isExamInProcess() {
 		return examInProcess;
 	}
+   
 
 	public String answerQuestion(String answer) {
+		String returned = "";
 		if(answer.equals(true))
-			return exam.answerQuestion(true);
+			returned = exam.answerQuestion(true);
 		else
-			return exam.answerQuestion(false);
+			returned = exam.answerQuestion(false);
+		
+		if (returned.startsWith("Exam done")) {
+			examInProcess = false;
+		}
+		return returned;
 	}
+	
+    public Room getExit(String direction) {
+        if (!examInProcess || actions.contains("learn")) {
+        	if (!examInProcess) {
+				Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
+			}
+        	if (!actions.contains("exam")) {
+				actions.add("exam");
+			}
+			return exits.get(Exits.getAnExit(direction));
+		}
+        return null;
+    }
 	
 }

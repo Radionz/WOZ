@@ -39,8 +39,9 @@ public class Exam {
 	private String nextQuestion() {
 		if (pointerQuestion < questions.size()) {
 			return questions.get(pointerQuestion).getQuestion();
-		}else
-			return "Exam done, you've got "+grade;
+		}else{
+			return "Exam done, you've got "+grade+"/5";
+		}
 	}
 
 
