@@ -35,7 +35,7 @@ public class Game {
 	private static Player player;
 	private Parser parser;
 	private Room currentRoom;
-	private HashMap constantes;
+	private HashMap<String,String> constantes;
 
 	private static Question[] questions;
 	private static Lesson[] lessons;
@@ -77,24 +77,24 @@ public class Game {
 		Room outside, theater, pub, lab, office;
 
 		// create the rooms
-		outside = new Room("outside the main entrance of the university");
-		ClassRoom classroom = new ClassRoom("in the classroom", false, 0);
-		ExamRoom examroom = new ExamRoom("in the examroom");
-		LabRoom labroom = new LabRoom("in the labroom");
-		Library library = new Library("in the library");
-		LunchRoom lunchroom = new LunchRoom("in the lunchroom");
-		Corridor corridor = new Corridor("in the corridor");
-		Corridor corridor2 = new Corridor("in the corridor");
-		theater = new Room("in a lecture theater");
-		pub = new Room("in the campus pub");
-		office = new Room("in the computing admin office");
+		outside = new Room(constantes.get("outside_description"));
+		ClassRoom classroom = new ClassRoom( constantes.get("classroom_description"), false, 0);
+		ExamRoom examroom = new ExamRoom(constantes.get("examroom_description"));
+		LabRoom labroom = new LabRoom(constantes.get("labroom_description"));
+		Library library = new Library(constantes.get("library_description"));
+		LunchRoom lunchroom = new LunchRoom(constantes.get("lunchroom_description"));
+		Corridor corridor = new Corridor(constantes.get("corridor_description"));
+		Corridor corridor2 = new Corridor(constantes.get("corridor_description"));
+		theater = new Room(constantes.get("theater_description"));
+		pub = new Room(constantes.get("pub_description"));
+		office = new Room(constantes.get("office_description"));
 
 		// initialise rooms exits
 		outside.setExit(Room.Exits.EAST, library);
 		outside.setExit(Room.Exits.SOUTH, corridor);
 		outside.setExit(Room.Exits.WEST, lunchroom);
-		outside.addItem(new Item("Chocolate bar",1));
-		outside.addUsableItem(new Item("Chocolate bar",1));
+		outside.addItem(new Item(constantes.get("chocolate_bar_description"),1));
+		outside.addUsableItem(new Item(constantes.get("chocolate_bar_description"),1));
 		outside.addItem(new Coffee());
 		
 
@@ -135,10 +135,7 @@ public class Game {
 	 */
 	public void play() {
 		String playerName = getPlayerName();
-		// TEST //
-		Item item = new Item("an empty beer can", 0);
-		//-TEST-//
-		player = new Player(playerName, item);
+		player = new Player(playerName);
 
 		printWelcome();
 
@@ -150,7 +147,7 @@ public class Game {
 			Command command = parser.getCommand();
 			finished = processCommand(command);
 		}
-		System.out.println("Thank you for playing.  Good bye.");
+		System.out.println(constantes.get("close_game"));
 	}
 
 	/**
@@ -159,8 +156,8 @@ public class Game {
 	 */
 	private String getPlayerName() {
 		System.out.println();
-		System.out.println("Welcome to the World of Zuul!");
-		System.out.println("First, tell me, what's your sweet name ?");
+		System.out.println(constantes.get("welcome"));
+		System.out.println(constantes.get("invite_enter_name"));
 		return parser.getPlayerName();
 	}
 
@@ -169,8 +166,8 @@ public class Game {
 	 */
 	private void printWelcome() {
 		System.out.println();
-		System.out.println("As you can see, " + this.player.getName() + ", World of Zuul is a new, incredibly boring adventure game.");
-		System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+		System.out.println(this.player.getName() + ", " + constantes.get("intro"));
+		System.out.println(constantes.get("need_help") + " : " + CommandWord.HELP);
 		System.out.println();
 		System.out.println(currentRoom.getLongDescription());
 	}
@@ -189,7 +186,7 @@ public class Game {
 
 		switch (commandWord) {
 		case UNKNOWN:
-			System.out.println("I don't know what you mean...");
+			System.out.println(constantes.get("dont_understand"));
 			break;
 
 		case HELP:
@@ -234,7 +231,7 @@ public class Game {
 
 	// implementations of user commands:
 	private void printInventory(Command command) {
-		System.out.println("You actually carry : " + player.getInventoryContent());
+		System.out.println(constantes.get("you_carry") + player.getInventoryContent());
 	}
 
 	/**
@@ -242,10 +239,8 @@ public class Game {
 	 * message and a list of the command words.
 	 */
 	private void printHelp() {
-		System.out.println("You are lost. You are alone. You wander");
-		System.out.println("around at the university.");
-		System.out.println();
-		System.out.println("Your command words are:");
+		System.out.println(constantes.get("help_intro"));
+		System.out.println(constantes.get("your_command_word"));
 		parser.showCommands();
 	}
 
@@ -256,7 +251,7 @@ public class Game {
 	private void goRoom(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
-			System.out.println("Go where?");
+			System.out.println(constantes.get("go_where"));
 			System.out.println(currentRoom.getExitString());
 			return;
 		}

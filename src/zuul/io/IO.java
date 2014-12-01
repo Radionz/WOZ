@@ -116,8 +116,9 @@ public abstract class IO {
         return string;
     }
     
-    public static HashMap getFromFile(String fileUrl) throws IOException {
-        HashMap contantes = new HashMap();
+    @SuppressWarnings({ "resource", "unchecked" })
+	public static HashMap<String, String> getFromFile(String fileUrl) throws IOException {
+        HashMap<String, String> contantes = new HashMap<String, String>();
         FileReader file = new FileReader(fileUrl); // open the file
         Object obj = null;
         try {
@@ -131,7 +132,7 @@ public abstract class IO {
             file.close();
         }
         if (obj != null) {
-        	contantes = (HashMap)obj;
+        	contantes = (HashMap<String, String>)obj;
         }
         file.close();
         return contantes;

@@ -19,15 +19,22 @@ public class Player {
 
     private ArrayList<Lesson> knowledges;
 
-    public Player(String name, Item item){
-        this.name = name;
+    public Player(String playerName, Item item){
+        this.name = playerName;
         this.knowledges = new ArrayList<>(10);
         this.inventory = new ArrayList<>(100);
         this.inventory.add(item);
         this.currentPOOLevel = 0;
     }
 
-    /* Basic getters / setters */
+    public Player(String playerName) {
+    	this.name = playerName;
+        this.knowledges = new ArrayList<>(10);
+        this.inventory = new ArrayList<>(100);
+        this.currentPOOLevel = 0;
+	}
+
+	/* Basic getters / setters */
     public String getName() {
         return name;
     }
