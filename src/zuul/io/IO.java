@@ -21,7 +21,7 @@ public abstract class IO {
 
 
     public enum PossibleFiles{
-        OTHER_LESSON("lesson_other.json"), POO_LESSON("lesson_poo.json"), POO_QUESTION("question_poo.json"), FRENCH("french.json");
+        OTHER_LESSON("lesson_other.json"), POO_LESSON("lesson_poo.json"), POO_QUESTION("question_poo.json"), ENGLISH("english.json");
 
         private String value;
         PossibleFiles(String value){
@@ -117,7 +117,7 @@ public abstract class IO {
     }
     
     public static HashMap getFromFile(String fileUrl) throws IOException {
-        HashMap contantes = new HashMap()
+        HashMap contantes = new HashMap();
         FileReader file = new FileReader(fileUrl); // open the file
         Object obj = null;
         try {

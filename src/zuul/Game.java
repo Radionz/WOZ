@@ -45,7 +45,7 @@ public class Game {
 	 */
 	public Game() {
 		try{
-			constantes = IO.getFromFile(IO.PossibleFiles.FRENCH.getPath());
+			constantes = IO.getFromFile(IO.PossibleFiles.ENGLISH.getPath());
 		} catch(Exception e) {e.printStackTrace();}
 		questions = new Question[15];
 		lessons = new Lesson[10];
