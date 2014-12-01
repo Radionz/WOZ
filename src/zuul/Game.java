@@ -378,7 +378,7 @@ public class Game {
 			if (((LabRoom) currentRoom).isLabInProcess() && (answer.equals("true") || answer.equals("false"))) {
 				System.out.println(((LabRoom) currentRoom).answerQuestion(answer));
 			}else
-				System.out.println("There is currently no exam or your answer in not correct ('true' or 'false')");
+				System.out.println("There is currently no lab exercise or your answer in not correct ('true' or 'false')");
 
 		}
 		else
