@@ -187,24 +187,20 @@ public class Room {
     
     public String doSomething(String action){
     	if(actions.contains(action)){
-		Method method = null;
-		try {
-    		  method = this.getClass().getMethod(action);
-    	} catch (SecurityException e) {
-    	  // ...
-    	} catch (NoSuchMethodException e) {
-    	}
+    		Method method = null;
+    		try {
+    			method = this.getClass().getMethod(action);
+    		} catch (Exception e) {e.printStackTrace();}
 
-    	try {
-    	  return (String) method.invoke(this);
-    	} catch (IllegalArgumentException e) {
-    	} catch (IllegalAccessException e) {
-    	} catch (InvocationTargetException e) {
+    		try {
+    			return (String) method.invoke(this);
+    		} catch (Exception e) {e.printStackTrace();}
+    	}else{
+    		return "This action doesn't exist in this room.";
     	}
+		return null;
     }
-		return "This action doesn't exist in this room.";
-    }
-    
+
 
     public enum Exits{
         NORTH("north"), EAST("east"), SOUTH("south"), WEST("west");

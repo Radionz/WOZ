@@ -11,6 +11,7 @@ import zuul.studies.Lesson;
  */
 public class ClassRoom extends Room{
 
+    private Lesson[] lessons;
     private Lesson lesson;
     private int sentenceNb;
 
@@ -25,20 +26,20 @@ public class ClassRoom extends Room{
     public ClassRoom(String description, boolean isPOO, int playerLevel) {
         super(description);
         this.sentenceNb = 0;
-        this.lesson = new Lesson(true, playerLevel);
+        this.lessons = Game.getLessons();
+        this.lesson = lessons[0];
         this.actions = new ArrayList<String>();
         actions.add("learn");
     }
     
     public String learn(){
-    	String returned = new String();
+    	String returned = "";
     	if (lesson.isPOO()) {
 			returned += "You have to learn the course to the bitter end.\n";
 		}
     	actions.add("nextSentence");
     	actions.remove("learn");
     	return returned += displaySentences();
-    	
     }
     
     public String nextSentence(){
@@ -46,11 +47,14 @@ public class ClassRoom extends Room{
     }
     
     public Room getExit(String direction) {
-        if (lesson.isDone()) {
+        if (lesson.isDone() || actions.contains("learn")) {
         	if (lesson.isPOO()) {
 				Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
 			}
-        	actions.add("learn");
+        	if (!actions.contains("learn")) {
+				actions.add("learn");
+			}
+        	
         	actions.remove("nextSentence");
 			return exits.get(Exits.getAnExit(direction));
 		}

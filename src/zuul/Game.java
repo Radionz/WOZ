@@ -45,8 +45,8 @@ public class Game {
 	public Game() {
 		questions = new Question[15];
 		lessons = new Lesson[10];
-		createRooms();
 		init();
+		createRooms();
 		parser = new Parser();
 	}
 
@@ -56,6 +56,10 @@ public class Game {
 
 	public static Question[] getQuestions() {
 		return questions;
+	}
+	
+	public static Lesson[] getLessons() {
+		return lessons;
 	}
 
 	/**
@@ -158,14 +162,12 @@ public class Game {
 		}*/
 			for (int i = 0; i < 15; i++) {
 				questions[i] = new Question(i + 1);
-				if (i < 5) {
-					lessons[i] = new Lesson(true, i + 1);
-				} else if (i < 10) {
-					lessons[i] = new Lesson(false, i - 4);
-				}
 			}
-			for (Lesson l : lessons) {
-				System.out.println(l.toString() + '\n');
+			for (int i = 0; i < 5; i++) {
+				lessons[i] = new Lesson(true, i+1);
+			}
+			for (int i = 0; i < 5; i++) {
+				lessons[i+5] = new Lesson(false, i+1);
 			}
 		}
 
