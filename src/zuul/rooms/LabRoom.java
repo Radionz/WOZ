@@ -34,7 +34,7 @@ public class LabRoom extends Room{
     /**
      * Check the answer
      * @param answer the answer
-     * @return if the answer is good or not
+     * @return if the answer is ggood or not
      */
     public String answerQuestion(String answer){
         String returned = "";
@@ -56,5 +56,9 @@ public class LabRoom extends Room{
      */
     public boolean isLabInProcess() {
         return labInProcess;
+    }
+
+    public Lab getLab(){
+        return this.lab;
     }
 }

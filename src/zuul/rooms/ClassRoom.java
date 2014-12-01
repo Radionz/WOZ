@@ -11,77 +11,66 @@ import zuul.studies.Lesson;
  */
 public class ClassRoom extends Room{
 
-	private Lesson[] lessons;
-	private Lesson lesson;
-	private int sentenceNb;
+    private Lesson[] lessons;
+    private Lesson lesson;
+    private int sentenceNb;
 
 
-	/**
-	 * Create a rooms described "description". Initially, it has
-	 * no exits. "description" is something like "a kitchen" or
-	 * "an open court yard".
-	 *
-	 * @param description The rooms's description.
-	 */
-	public ClassRoom(String description, boolean isPOO, int playerLevel) {
-		super(description);
-		this.sentenceNb = 0;
-		this.lessons = Game.getLessons();
-		this.lesson = lessons[0];
-		this.actions = new ArrayList<String>();
-		actions.add("learn");
-	}
-
-	/**
-	 * learn a course, display the first sentence of a course
-	 * @return
-	 */
-	public String learn(){
-		String returned = "";
-		if (lesson.isPOO()) {
+    /**
+     * Create a rooms described "description". Initially, it has
+     * no exits. "description" is something like "a kitchen" or
+     * "an open court yard".
+     *
+     * @param description The rooms's description.
+     */
+    public ClassRoom(String description, boolean isPOO, int playerLevel) {
+        super(description);
+        this.sentenceNb = 0;
+        this.lessons = Game.getLessons();
+        this.lesson = lessons[0];
+        this.actions = new ArrayList<String>();
+        actions.add("learn");
+    }
+    
+    public String learn(){
+    	String returned = "";
+    	if (lesson.isPOO()) {
 			returned += "You have to learn the course to the bitter end.\n";
 		}
-		actions.add("nextSentence");
-		actions.remove("learn");
-		return returned += displaySentences();
-	}
-
-	/**
-	 * the next sentence of a course
-	 * @return
-	 */
-	public String nextSentence(){
-		return displaySentences();
-	}
-
-	/**
-	 * return the exits of a the room, and no exit if the course is POO and not done
-	 */
-	public Room getExit(String direction) {
-		if (lesson.isDone() || actions.contains("learn")) {
-			if (lesson.isPOO()) {
-				Game.getPlayer().learn(lesson);
+    	actions.add("nextSentence");
+    	actions.remove("learn");
+    	return returned += displaySentences();
+    }
+    
+    public String nextSentence(){
+    	return displaySentences();
+    }
+    
+    public Room getExit(String direction) {
+        if (lesson.isDone() || actions.contains("learn")) {
+        	if (lesson.isPOO()) {
+        		Game.getPlayer().learn(lesson);
 				Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
 			}
-			if (!actions.contains("learn")) {
+        	if (!actions.contains("learn")) {
 				actions.add("learn");
 			}
-
-			actions.remove("nextSentence");
+        	
+        	actions.remove("nextSentence");
 			return exits.get(Exits.getAnExit(direction));
 		}
-		displaySentences();
-		return null;
-	}
+        displaySentences();
+        return null;
+    }
 
-	/**
-	 * Return the n'the phrase of the lesson, to be display
-	 * in the game part.
-	 * @return String of the n'th phrase of the lesson
-	 */
-	public String displaySentences(){
-		String res = lesson.getSentence(sentenceNb);
-		sentenceNb++;
-		return res;
-	}
+    /**
+     * Return the n'the phrase of the lesson, to be display
+     * in the game part.
+     * @return String of the n'th phrase of the lesson
+     */
+    public String displaySentences(){
+        String res = lesson.getSentence(sentenceNb);
+        sentenceNb++;
+        return res;
+    }
 }

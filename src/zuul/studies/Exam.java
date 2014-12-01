@@ -1,6 +1,7 @@
 package zuul.studies;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import zuul.Game;
 
@@ -15,11 +16,9 @@ public class Exam {
 
     public Exam(){
         questions = new ArrayList<Question>();
-        questions.add(Game.getQuestions()[1]);
-        questions.add(Game.getQuestions()[2]);
-        questions.add(Game.getQuestions()[3]);
-        questions.add(Game.getQuestions()[4]);
-        questions.add(Game.getQuestions()[5]);
+		for(int i = 0; i < 5; i++){
+			questions.add(Game.getQuestions()[(i*3)+ new Random().nextInt(3)]);
+		}
     }
 
 

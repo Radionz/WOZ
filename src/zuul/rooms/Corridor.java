@@ -26,44 +26,27 @@ public class Corridor extends Room{
         actions.add("switchOff");
     }
     
-    /**
-     * Switch on the light
-     * @return
-     */
     public String switchOn(){
     	this.light = true;
     	return "Lights ON !";
     }
     
-    /**
-     * switch off the light
-     * @return
-     */
     public String switchOff(){
     	this.light = true;
     	return "Lights OFF !";
     }
 
-    /**
-     * get the other state of the lab
-     */
     public void switchLight() {
         this.light = !this.light;
     }
     
     @Override
-    /**
-     * return the long description og the corridor
-     */
     public String getLongDescription() {
     	if(light)
     		return "You are " + description + " and the light is on.\n" + getItemString() + "\n" + getActionString() + "\n" + getExitString();
     	return "You are " + description + " and the light is off.\n" + getActionString() + "\n" + getExitString();
     }
     
-    /**
-     * return true if the item in contain in the corridor
-     */
     public boolean hasItem(Item item){
     if(light)
         return this.items.contains(item);
