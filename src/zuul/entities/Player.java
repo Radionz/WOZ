@@ -13,6 +13,12 @@ import java.util.Random;
  */
 public class Player {
 
+    /**
+     * Player class of the game : describe all possible actions for the player
+     * pick drop etc ..
+     */
+
+
     private final String name;
     private ArrayList<Item> inventory;
     private int energy;
@@ -21,6 +27,11 @@ public class Player {
     private ArrayList<Lesson> knowledges;
     private ArrayList<Lab> abilities;
 
+    /**
+     * constructor with a name an carrying an item
+     * @param playerName string of the player name
+     * @param item an item
+     */
     public Player(String playerName, Item item){
         this.name = playerName;
         this.knowledges = new ArrayList<>(10);
@@ -30,6 +41,10 @@ public class Player {
         this.currentPOOLevel = 0;
     }
 
+    /**
+     * constructor with a name for the player
+     * @param playerName String of the player's name
+     */
     public Player(String playerName) {
     	this.name = playerName;
         this.knowledges = new ArrayList<>(10);
@@ -54,6 +69,18 @@ public class Player {
     public void setCurrentPOOLevel(int currentPOOLevel) {
         this.currentPOOLevel = currentPOOLevel;
     }
+
+    public ArrayList<Lesson> getKnowledges() {
+        return knowledges;
+    }
+
+    public void learn(Lesson l){
+        this.knowledges.add(l);
+    }
+
+    public ArrayList<Lab> getAbilities() {
+        return this.abilities;
+    }
     /* Basic getters / setters */
 
 
@@ -70,7 +97,13 @@ public class Player {
         }
         return false;
     }
-    
+
+    /**
+     * Method allowing the player to pick up an item
+     * @param room the current room where to pick the item
+     * @param itemString the item name
+     * @return boolean if the action succeed
+     */
     public boolean pickUp(Room room, String itemString){
         if(room != null && itemString != null){
         	for (Item item : room.getItemsList()) {
@@ -183,10 +216,9 @@ public class Player {
     }
 
 
-    public ArrayList<Lesson> getKnowledges() {
-        return knowledges;
-    }
-
+    /**
+     * Method erasing randomly a lesson from player's mind
+     */
     public void forgetALesson(){
     	if(!knowledges.isEmpty()){
 	        int k = new Random().nextInt(this.knowledges.size());
@@ -194,14 +226,10 @@ public class Player {
     	}
     }
 
-    public void learn(Lesson l){
-        this.knowledges.add(l);
-    }
-
-    public ArrayList<Lab> getAbilities() {
-        return this.abilities;
-    }
-
+    /**
+     * method adding a lab to players abilities
+     * @param lab Lab object to add
+     */
     public void improveAbilities(Lab lab) {
         this.abilities.add(lab);
     }

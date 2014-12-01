@@ -1,14 +1,10 @@
 package zuul.rooms;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import zuul.Game;
-import zuul.rooms.Room.Exits;
 import zuul.studies.Exam;
 import zuul.studies.Lab;
-import zuul.studies.Question;
 
 /**
  * @author Nicolas Sarroche, Dorian Blanc
@@ -85,7 +81,13 @@ public class ExamRoom extends Room{
 		}
 		return returned;
 	}
-	
+
+
+	/**
+	 *  specific exit for ExamRoom : depends on if it's over, or not.
+	 * @param direction The exit's direction.
+	 * @return a room in a certain direction
+	 */
     public Room getExit(String direction) {
         if (!examInProcess || actions.contains("learn")) {
         	if (!examInProcess) {

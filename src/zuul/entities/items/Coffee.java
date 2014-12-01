@@ -6,6 +6,13 @@ import zuul.Game;
  */
 public class Coffee extends Item{
 
+	/**
+	 * Class describing how coffee works
+	 */
+
+	/**
+	 * public constructor for coffee
+	 */
 	public Coffee() {
 		name = "coffee";
 		energy = 1;

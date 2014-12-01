@@ -40,8 +40,10 @@ public class Game {
 	private static Question[] questions;
 	private static Lesson[] lessons;
 
-	/**Lesson[]
+	/**
 	 * Create the game and initialise its internal map.
+	 * all questions and lessons arrays
+	 * and create a Player
 	 */
 	public Game() {
 		try{
@@ -361,6 +363,10 @@ public class Game {
 		}
 	}
 
+	/**
+	 * method allowing you to do some actions in different rooms
+	 * @param command full command to parse
+	 */
 	private void doSomething(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
@@ -374,7 +380,12 @@ public class Game {
 		// Try to use item in the current rooms.
 		System.out.println(currentRoom.doSomething(mehtod));
 	}
-	
+
+	/**
+	 * method allowing you to answer question in some room as
+	 * LabRoom or ExamRoom
+	 * @param command the full command to parse
+	 */
 	private void answerQuestion(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know...

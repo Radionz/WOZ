@@ -12,7 +12,6 @@ import java.util.Random;
 public class LunchRoom extends Room{
 
 
-
     /**
      * Create a rooms described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -26,10 +25,18 @@ public class LunchRoom extends Room{
         actions.add("playBabyfoot");
     }
 
+    /**
+     * dynamically called
+     * @return the player successfully drink some coffee
+     */
     public String drinkCoffee(){
-    	return "WOW drinkCoffee !";
+        return Game.getPlayer().use("coffee");
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public String playBabyfoot(){
     	if(isForced()){
     		Game.getPlayer().forgetALesson();
@@ -39,6 +46,10 @@ public class LunchRoom extends Room{
     		return "You don't loose a lesson !";
     }
 
+    /**
+     * return true when the player is forced to play babyfoot
+     * @return true when the player is forced to play babyfoot
+     */
     public boolean isForced(){
         int random = new Random().nextInt(5);
         return random == 1;

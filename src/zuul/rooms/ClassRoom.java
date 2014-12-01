@@ -3,7 +3,6 @@ package zuul.rooms;
 import java.util.ArrayList;
 
 import zuul.Game;
-import zuul.rooms.Room.Exits;
 import zuul.studies.Lesson;
 
 /**
@@ -35,7 +34,16 @@ public class ClassRoom extends Room{
     public Lesson getLesson(){
         return this.lesson;
     }
-    
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
+
+    /**
+     * method dynamically called
+     * action to perform in ClassRoom
+     * @returnthe string of the lesson
+     */
     public String learn(){
     	String returned = "";
     	if (lesson.isPOO()) {
@@ -45,11 +53,21 @@ public class ClassRoom extends Room{
     	actions.remove("learn");
     	return returned += displaySentences();
     }
-    
+
+    /**
+     * method dynamically called
+     * action to perform when the player ask for the next sentences
+     * @return String of the lesson
+     */
     public String nextSentence(){
     	return displaySentences();
     }
-    
+
+    /**
+     *  specific exit for classRoom : depends on if it's a poo lesson, or not.
+     * @param direction The exit's direction.
+     * @return a room in a certain direction
+     */
     public Room getExit(String direction) {
         if (lesson.isDone() || actions.contains("learn")) {
         	if (lesson.isPOO() && lesson.isDone()) {
@@ -80,7 +98,4 @@ public class ClassRoom extends Room{
         return res;
     }
 
-    public void setLesson(Lesson lesson) {
-        this.lesson = lesson;
-    }
 }

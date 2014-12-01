@@ -1,8 +1,6 @@
 package zuul.rooms;
 
-
 import java.util.ArrayList;
-
 import zuul.Game;
 import zuul.studies.Lab;
 
@@ -67,11 +65,20 @@ public class LabRoom extends Room{
         return this.lab;
     }
 
+    /**
+     * Set a new Lab and add the action "lab" to action list
+     * @param lab
+     */
     public void setLab(Lab lab){
         actions.add("lab");
         this.lab= lab;
     }
 
+    /**
+     *  specific exit for LabRoom : depends on if it's over, or not.
+     * @param direction The exit's direction.
+     * @return a room in a certain direction
+     */
     public Room getExit(String direction) {
         if (lab.getSuccess() || actions.contains("lab")) {
 

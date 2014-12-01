@@ -14,6 +14,9 @@ public class Exam {
     private int pointerQuestion = 0;
     private int grade = 0;
 
+	/**
+	 * Exam constructor
+	 */
     public Exam(){
         questions = new ArrayList<Question>();
 		for(int i = 0; i < 5; i++){
@@ -22,6 +25,7 @@ public class Exam {
     }
 
 
+	// getters / setters //
     public ArrayList<Question> getQuestions() {
         return questions;
     }

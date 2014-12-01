@@ -50,6 +50,12 @@ public class Lesson {
         return number;
     }
 
+
+    /**
+     * method allowing you to get the n'th sentences of teacher speech
+     * @param number number of the speech line
+     * @return the n'th speech line
+     */
     public String getSentence(int number){
     	if (insts.size()<=number) {
     		this.done = true;
@@ -60,6 +66,10 @@ public class Lesson {
     }
 
 
+    /**
+     * Method looking into json file to get the n'th element and use it as a lesson
+     * @param path String path of the file
+     */
     private void getLessonFromFile(String path){
         String body = null;
         try {
@@ -73,6 +83,10 @@ public class Lesson {
         parseBody(body);
     }
 
+    /**
+     * method parsing the body to extract n substring.
+     * @param body string to parse/split
+     */
     private void parseBody(String body){
         String splits[] = body.split("\\.");
         Collections.addAll(insts, splits);
