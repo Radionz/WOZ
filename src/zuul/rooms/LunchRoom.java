@@ -27,7 +27,7 @@ public class LunchRoom extends Room{
     }
 
     public String drinkCoffee(){
-    	return "WOW drinkCoffee !";
+    	return Game.getPlayer().use("coffee");
     }
     
     public String playBabyfoot(){
