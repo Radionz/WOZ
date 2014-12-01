@@ -31,6 +31,10 @@ public class ClassRoom extends Room{
         this.actions = new ArrayList<String>();
         actions.add("learn");
     }
+
+    public Lesson getLesson(){
+        return this.lesson;
+    }
     
     public String learn(){
     	String returned = "";
@@ -72,5 +76,9 @@ public class ClassRoom extends Room{
         String res = lesson.getSentence(sentenceNb);
         sentenceNb++;
         return res;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
     }
 }
