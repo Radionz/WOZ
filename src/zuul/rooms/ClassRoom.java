@@ -54,6 +54,8 @@ public class ClassRoom extends Room{
         if (lesson.isDone() || actions.contains("learn")) {
         	if (lesson.isPOO() && lesson.isDone()) {
         		Game.getPlayer().learn(lesson);
+        		sentenceNb = 0;
+        		this.lesson = lessons[Game.getPlayer().getKnowledges().size()];
 				//Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
 			}
         	if (!actions.contains("learn")) {
