@@ -79,6 +79,10 @@ public class Room {
         return "You are " + description + ".\n" + getItemString() + "\n" + getActionString() + "\n" + getExitString();
     }
 
+    /**
+     * list of actions in the room
+     * @return string of all actions
+     */
     public String getActionString() {
     	if (actions.isEmpty())
     		return "No actions.";
@@ -88,7 +92,11 @@ public class Room {
         }
         return (returnString.length()>3)? returnString.substring(0, returnString.length()-3): returnString;
 	}
-    
+
+    /**
+     * list of items in the room
+     * @return string of all items
+     */
     public String getItemString() {
     	if (items.isEmpty())
     		return "No items.";
@@ -176,7 +184,12 @@ public class Room {
 
         return (res.length()>2)? res.substring(0, res.length()-2): res;
     }
-    
+
+    /**
+     * Method allowing you to use an Item
+     * @param itemString item name
+     * @return if the item is usable
+     */
     public boolean canUseItem(String itemString) {
     	for (Item item : usableItems) {
 			if(item.getName().equals(itemString))
@@ -184,7 +197,12 @@ public class Room {
 		}
         return false;
     }
-    
+
+    /**
+     * Check the possible actions
+     * @param action an action
+     * @return a string if the action succeed or not
+     */
     public String doSomething(String action){
     	if(actions.contains(action)){
     		Method method = null;
@@ -203,6 +221,9 @@ public class Room {
 
 
     public enum Exits{
+        /**
+         * Enum of the possible exits !
+         */
         NORTH("north"), EAST("east"), SOUTH("south"), WEST("west");
 
         private String value;

@@ -21,12 +21,21 @@ public class LabRoom extends Room{
         actions.add("lab");
     }
 
+    /**
+     * Dynamic methoc called
+     * @return the question asked
+     */
     public String lab(){
         actions.remove("lab");
         this.labInProcess = true;
         return lab.askQuestion();
     }
 
+    /**
+     * Check the answer
+     * @param answer the answer
+     * @return if the answer is ggood or not
+     */
     public String answerQuestion(String answer){
         String returned = "";
         if(answer.equals(true))
@@ -40,14 +49,11 @@ public class LabRoom extends Room{
         return returned;
     }
 
-    public Lab getLab() {
-        return lab;
-    }
 
-    public void setLab(Lab lab) {
-        this.lab = lab;
-    }
-
+    /**
+     * Return true if there is currently a lab
+     * @return labInProcess
+     */
     public boolean isLabInProcess() {
         return labInProcess;
     }

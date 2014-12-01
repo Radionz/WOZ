@@ -85,7 +85,13 @@ public class Player {
         }
         return false;
     }
-    
+
+    /**
+     * Method allowing you to drop an item
+     * @param room the current room
+     * @param itemString String name of the item
+     * @return
+     */
     public boolean dropItem(Room room, String itemString){
         if(room != null && itemString != null){
         	for (Item item : inventory) {
