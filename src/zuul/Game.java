@@ -103,7 +103,7 @@ public class Game {
 		
 
 		lunchroom.setExit(Room.Exits.WEST, pub);
-		library.setExit(Room.Exits.WEST, theater);
+		library.setExit(Room.Exits.EAST, theater);
 
 		corridor.setExit(Room.Exits.EAST, labroom);
 		corridor.setExit(Room.Exits.WEST, classroom);
