@@ -35,7 +35,7 @@ public class Game {
 	private static Player player;
 	private Parser parser;
 	private Room currentRoom;
-	private HashMap<String,String> constantes;
+	private static HashMap<String,String> constantes;
 
 	private static Question[] questions;
 	private static Lesson[] lessons;
@@ -56,6 +56,10 @@ public class Game {
 	}
 
 	/* Basic getters */
+	public static HashMap<String, String> getConstantes() {
+		return constantes;
+	}
+	
 	public static Player getPlayer() {
 		return player;
 	}
