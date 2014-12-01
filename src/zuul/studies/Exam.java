@@ -27,6 +27,11 @@ public class Exam {
         return questions;
     }
 
+	/**
+	 * method allowing you to answer a question
+	 * @param answer player's answer
+	 * @return if the answer is right
+	 */
 	public String answerQuestion(boolean answer) {
 		Question q = questions.get(pointerQuestion);
 		if(q.isAnswer() == answer)
@@ -36,6 +41,10 @@ public class Exam {
 	}
 
 
+	/**
+	 * method allowing you to display the next question
+	 * @return string of the question
+	 */
 	private String nextQuestion() {
 		if (pointerQuestion < questions.size()) {
 			return questions.get(pointerQuestion).getQuestion();
@@ -44,7 +53,10 @@ public class Exam {
 		}
 	}
 
-
+	/**
+	 * method allowing you to ask a question
+	 * @return string of the question
+	 */
 	public String askQuestion() {
 		return questions.get(pointerQuestion).getQuestion();
 	}

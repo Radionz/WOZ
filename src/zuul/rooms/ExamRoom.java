@@ -31,21 +31,38 @@ public class ExamRoom extends Room{
         actions.add("exam");
     }
 
+	/**
+	 * Dynamic call of exam
+	 * @return the question string
+	 */
     public String exam(){
     	actions.remove("exam");
     	examInProcess = true;
 		return exam.askQuestion();
     }
-    
+
+	/**
+	 * get the exam
+	 * @return current exam
+	 */
 	public Exam getExam() {
         return exam;
     }
-	
+
+	/**
+	 * method allowing you to know if there is an exaù
+	 * @return
+	 */
     public boolean isExamInProcess() {
 		return examInProcess;
 	}
-   
 
+
+	/**
+	 * method allowing you to answer a question
+	 * @param answer string of the answer
+	 * @return if the answer is right
+	 */
 	public String answerQuestion(String answer) {
 		String returned = "";
 		if(answer.equals(true))

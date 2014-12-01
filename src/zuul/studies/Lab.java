@@ -20,6 +20,7 @@ public class Lab {
         this.succeed = false;
     }
 
+    /* basic getters */
     public Question[] getQuestions() {
         return questions;
     }
@@ -33,11 +34,21 @@ public class Lab {
     public boolean getSuccess(){
         return this.succeed;
     }
+    /* basic getters */
 
+    /**
+     * method allowing you to display a question
+     * @return a string of the question
+     */
     public String askQuestion() {
         return Game.getQuestions()[Game.getPlayer().getCurrentPOOLevel()*3+questionNum].getQuestion();
     }
 
+    /**
+     * method allowing you to answer a question
+     * @param answer answer to check
+     * @return if the answer is right
+     */
     public String answerQuestion(boolean answer) {
         Question q = Game.getQuestions()[Game.getPlayer().getCurrentPOOLevel()*3+questionNum];
         if(q.isAnswer() == answer)
@@ -46,6 +57,10 @@ public class Lab {
         return nextQuestion();
     }
 
+    /**
+     * method allowing you to display next question
+     * @return string of the next question
+     */
     private String nextQuestion() {
         if (questionNum < questions.length) {
             return Game.getQuestions()[questionNum].getQuestion();
