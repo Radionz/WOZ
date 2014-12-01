@@ -2,6 +2,7 @@ package zuul.entities;
 
 import zuul.entities.items.Item;
 import zuul.rooms.Room;
+import zuul.studies.Lab;
 import zuul.studies.Lesson;
 
 import java.util.ArrayList;
@@ -18,10 +19,12 @@ public class Player {
     private int currentPOOLevel;
 
     private ArrayList<Lesson> knowledges;
+    private ArrayList<Lab> abilities;
 
     public Player(String name, Item item){
         this.name = name;
         this.knowledges = new ArrayList<>(10);
+        this.abilities = new ArrayList<>(10);
         this.inventory = new ArrayList<>(100);
         this.inventory.add(item);
         this.currentPOOLevel = 0;
@@ -185,5 +188,13 @@ public class Player {
 
     public void learn(Lesson l){
         this.knowledges.add(l);
+    }
+
+    public ArrayList<Lab> getAbilities() {
+        return this.abilities;
+    }
+
+    public void improveAbilities(Lab lab) {
+        this.abilities.add(lab);
     }
 }
