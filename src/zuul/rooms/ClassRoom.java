@@ -52,7 +52,7 @@ public class ClassRoom extends Room{
     
     public Room getExit(String direction) {
         if (lesson.isDone() || actions.contains("learn")) {
-        	if (lesson.isPOO()) {
+        	if (lesson.isPOO() && lesson.isDone()) {
         		Game.getPlayer().learn(lesson);
 				//Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
 			}
