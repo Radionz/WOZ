@@ -26,9 +26,13 @@ public class LabRoom extends Room{
      * @return the question asked
      */
     public String lab(){
-        actions.remove("lab");
-        this.labInProcess = true;
-        return lab.askQuestion();
+        if(Game.getPlayer().getKnowledges().size() > 0 && Game.getPlayer().getKnowledges().get(Game.getPlayer().getCurrentPOOLevel())!=null){
+
+            actions.remove("lab");
+            this.labInProcess = true;
+            return lab.askQuestion();
+        }
+        return "You can't do this lab without the proper lesson !";
     }
 
     /**
