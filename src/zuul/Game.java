@@ -1,10 +1,13 @@
 package zuul;
 
+import java.util.HashMap;
+
 import zuul.entities.Player;
 import zuul.entities.items.Coffee;
 import zuul.entities.items.Item;
 import zuul.io.Command;
 import zuul.io.CommandWord;
+import zuul.io.IO;
 import zuul.io.Parser;
 import zuul.rooms.*;
 import zuul.studies.Lesson;
@@ -31,6 +34,7 @@ public class Game {
 	private static Player player;
 	private Parser parser;
 	private Room currentRoom;
+	private HashMap constantes;
 
 	private static Question[] questions;
 	private static Lesson[] lessons;
@@ -39,6 +43,9 @@ public class Game {
 	 * Create the game and initialise its internal map.
 	 */
 	public Game() {
+		try{
+			constantes = IO.getFromFile(IO.PossibleFiles.FRENCH.getPath());
+		} catch(Exception e) {e.printStackTrace();}
 		questions = new Question[15];
 		lessons = new Lesson[10];
 		player = new Player("", new Item(""));

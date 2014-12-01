@@ -6,12 +6,7 @@
 "library_description":"in the library",
 "lunchroom_description":"in the lunchroom",
 "corridor_description":"in the corridor",
-"theater_description":"in a lecture theater",
+"theater_description":"in the theater",
 "pub_description":"in the campus pub",
 "office_description":"in the computing admin office"
 }
-
-"items":[
-    {"name":"John", "energy":"Doe"}, 
-    {"name":"Anna", "energy":"Smith"}
-]

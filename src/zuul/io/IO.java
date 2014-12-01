@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * @author Nicolas Sarroche, Dorian Blanc
@@ -20,7 +21,7 @@ public abstract class IO {
 
 
     public enum PossibleFiles{
-        OTHER_LESSON("lesson_other.json"), POO_LESSON("lesson_poo.json"), POO_QUESTION("question_poo.json"), FRENCH_CONSTANTS("french_constants.json");
+        OTHER_LESSON("lesson_other.json"), POO_LESSON("lesson_poo.json"), POO_QUESTION("question_poo.json"), FRENCH("french.json");
 
         private String value;
         PossibleFiles(String value){
@@ -113,6 +114,27 @@ public abstract class IO {
         }
         file.close();
         return string;
+    }
+    
+    public static HashMap getFromFile(String fileUrl) throws IOException {
+        HashMap contantes = new HashMap()
+        FileReader file = new FileReader(fileUrl); // open the file
+        Object obj = null;
+        try {
+            file = new FileReader(fileUrl);
+            obj = jsp.parse(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } finally {
+            file.close();
+        }
+        if (obj != null) {
+        	contantes = (HashMap)obj;
+        }
+        file.close();
+        return contantes;
     }
 
     /**
