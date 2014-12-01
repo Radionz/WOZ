@@ -262,9 +262,9 @@ public class Game {
 		Room nextRoom = currentRoom.getExit(direction);
 
 		if (nextRoom == null) {
-			System.out.println("There is no door!");
+			System.out.println(constantes.get("no_door"));
 		}else if(nextRoom instanceof Library && !((Library)nextRoom).checkForschedule()){
-			System.out.println("You can't access to Library now ! It's close ..");
+			System.out.println(constantes.get("no_access_library"));
 		}else if(nextRoom instanceof LunchRoom && ((LunchRoom)nextRoom).isForced()){
 			((LunchRoom)nextRoom).playBabyfoot();
 			currentRoom = nextRoom;
@@ -296,7 +296,7 @@ public class Game {
 	private void dropItem(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
-			System.out.println("What to drop ?");
+			System.out.println(constantes.get("what_drop"));
 			return;
 		}
 
@@ -304,10 +304,10 @@ public class Game {
 
 		// Try to drop item in the current rooms.
 		if(player.dropItem(currentRoom,itemName)){
-			System.out.println("successfully dropped " + itemName);
+			System.out.println(constantes.get("ok_drop") + itemName);
 		}else{
-			System.out.println("You don't carry : " + itemName);
-			System.out.println("You actually carry : " + player.getInventoryContent());
+			System.out.println(constantes.get("you_not_carry") + itemName);
+			System.out.println(constantes.get("you_carry") + player.getInventoryContent());
 		}
 	}
 
@@ -318,7 +318,7 @@ public class Game {
 	private void pickItem(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
-			System.out.println("What to pick up ?");
+			System.out.println(constantes.get("what_pick"));
 			System.out.println(currentRoom.getItemString());
 			return;
 		}
@@ -328,9 +328,9 @@ public class Game {
 		// Try to pick item in the current rooms.
 		if(currentRoom.hasItem(itemName)){
 			player.pickUp(currentRoom,itemName);
-			System.out.println("successfully picked " + itemName);
+			System.out.println(constantes.get("ok_pick") + itemName);
 		}else{
-			System.out.println("There is no : " + itemName);
+			System.out.println(constantes.get("no") + itemName);
 			System.out.println(currentRoom.getItemString());
 		}
 	}
@@ -342,7 +342,7 @@ public class Game {
 	private void useItem(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
-			System.out.println("What to use ?");
+			System.out.println(constantes.get("what_use"));
 			return;
 		}
 
@@ -353,14 +353,14 @@ public class Game {
 			System.out.println(player.use(itemName));
 		}
 		else {
-			System.out.println("Impossible to use this item here.");
+			System.out.println(constantes.get("no_use_item_here"));
 		}
 	}
 
 	private void doSomething(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
-			System.out.println("What to do ?");
+			System.out.println(constantes.get("what_do"));
 			System.out.println(currentRoom.getActionString());
 			return;
 		}
@@ -374,7 +374,7 @@ public class Game {
 	private void answerQuestion(Command command) {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know...
-			System.out.println("What to answer ? ('true' or 'false')");
+			System.out.println(constantes.get("what_answer"));
 			return;
 		}
 
@@ -385,19 +385,19 @@ public class Game {
 				System.out.println(((ExamRoom) currentRoom).answerQuestion(answer));
 			}
 			else
-				System.out.println("There is currently no exam or your answer in not correct ('true' or 'false')");
+				System.out.println(constantes.get("no_exam"));
 		}else if((currentRoom instanceof LabRoom)){
 			if(!((LabRoom)currentRoom).getLab().getSuccess()){
 				if (((LabRoom) currentRoom).isLabInProcess() && (answer.equals("true") || answer.equals("false"))) {
 					System.out.println(((LabRoom) currentRoom).answerQuestion(answer));
 				}else
-					System.out.println("There is currently no exam or your answer in not correct ('true' or 'false')");
+					System.out.println(constantes.get("no_exam"));
 			}else{
-				System.out.println("This lab session is over !");
+				System.out.println(constantes.get("lab_over"));
 			}
 		}
 		else
-			System.out.println("You are not in the examroom");
+			System.out.println(constantes.get("not_in_examroom"));
 	}
 	
 	/**
@@ -408,7 +408,7 @@ public class Game {
 	 */
 	private boolean quit(Command command) {
 		if (command.hasSecondWord()) {
-			System.out.println("Quit what?");
+			System.out.println(constantes.get("what_quit"));
 			return false;
 		} else {
 			return true; // signal that we want to quit
