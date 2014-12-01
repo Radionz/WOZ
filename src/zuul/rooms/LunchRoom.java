@@ -1,5 +1,6 @@
 package zuul.rooms;
 
+import zuul.Game;
 import zuul.entities.Player;
 
 import java.util.ArrayList;
@@ -29,9 +30,13 @@ public class LunchRoom extends Room{
     	return "WOW drinkCoffee !";
     }
     
-    public String playBabyfoot(Player player){
-    	player.forgetALesson();
-        return "WOW amazing babyfoot play !";
+    public String playBabyfoot(){
+    	if(isForced()){
+    		Game.getPlayer().forgetALesson();
+    		return "You loose a lesson !";
+    	}
+    	else
+    		return "You don't loose a lesson !";
     }
 
     public boolean isForced(){

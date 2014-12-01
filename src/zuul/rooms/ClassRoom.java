@@ -49,6 +49,7 @@ public class ClassRoom extends Room{
     public Room getExit(String direction) {
         if (lesson.isDone() || actions.contains("learn")) {
         	if (lesson.isPOO()) {
+        		Game.getPlayer().learn(lesson);
 				Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
 			}
         	if (!actions.contains("learn")) {

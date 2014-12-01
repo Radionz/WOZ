@@ -171,8 +171,10 @@ public class Player {
     }
 
     public void forgetALesson(){
-        int k = new Random().nextInt(this.knowledges.size());
-        this.knowledges.remove(k);
+    	if(!knowledges.isEmpty()){
+	        int k = new Random().nextInt(this.knowledges.size());
+	        this.knowledges.remove(k);
+    	}
     }
 
     public void learn(Lesson l){

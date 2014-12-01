@@ -313,7 +313,7 @@ public class Game {
 		}else if(nextRoom instanceof Library && !((Library)nextRoom).checkForschedule()){
 			System.out.println("You can't access to Library now ! It's close ..");
 		}else if(nextRoom instanceof LunchRoom && ((LunchRoom)nextRoom).isForced()){
-			((LunchRoom)nextRoom).playBabyfoot(player);
+			((LunchRoom)nextRoom).playBabyfoot();
 			currentRoom = nextRoom;
 			System.out.println(currentRoom.getLongDescription());
 
