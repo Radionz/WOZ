@@ -23,15 +23,18 @@ public class Corridor extends Room{
         this.light = false;
         this.actions = new ArrayList<String>();
         actions.add("switchOn");
-        actions.add("switchOff");
     }
     
     public String switchOn(){
+        actions.add("switchOff");
+        actions.remove("switchOn");
     	this.light = true;
     	return "Lights ON !";
     }
     
     public String switchOff(){
+    	actions.remove("switchOff");
+        actions.add("switchOn");
     	this.light = true;
     	return "Lights OFF !";
     }
