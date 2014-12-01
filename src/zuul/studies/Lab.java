@@ -11,10 +11,15 @@ public class Lab {
     private boolean succeed;
     private int questionNum;
     private int grade;
+    private int i;
 
     public Lab(int i){
+        this.i = i;
         questions = new Question[3];
-        System.arraycopy(Game.getQuestions(), i * 3, questions, 0, i);
+        //System.arraycopy(Game.getQuestions(), i * 3, questions, 0, i);
+        for(int k = 0; k<3;k++){
+            questions[k]=Game.getQuestions()[(i*3)+k];
+        }
         this.questionNum = 0;
         this.grade = 0;
         this.succeed = false;
@@ -26,12 +31,11 @@ public class Lab {
     }
 
     public void isSucceed(){
-        for(Question q : questions){
-            this.succeed &= q.isDone();
-        }
+        this.succeed= this.grade > 2;
     }
 
     public boolean getSuccess(){
+        isSucceed();
         return this.succeed;
     }
     /* basic getters */
@@ -41,7 +45,8 @@ public class Lab {
      * @return a string of the question
      */
     public String askQuestion() {
-        return Game.getQuestions()[Game.getPlayer().getCurrentPOOLevel()*3+questionNum].getQuestion();
+        //return Game.getQuestions()[Game.getPlayer().getCurrentPOOLevel()*3+questionNum].getQuestion();
+        return questions[questionNum].getQuestion();
     }
 
     /**
@@ -50,9 +55,11 @@ public class Lab {
      * @return if the answer is right
      */
     public String answerQuestion(boolean answer) {
-        Question q = Game.getQuestions()[Game.getPlayer().getCurrentPOOLevel()*3+questionNum];
-        if(q.isAnswer() == answer)
+        Question q = questions[questionNum];
+        System.out.println(q.isAnswer());
+        if(answer == q.isAnswer()){
             grade++;
+        }
         questionNum++;
         return nextQuestion();
     }
@@ -63,9 +70,9 @@ public class Lab {
      */
     private String nextQuestion() {
         if (questionNum < questions.length) {
-            return Game.getQuestions()[questionNum].getQuestion();
+            return this.getQuestions()[questionNum].getQuestion();
         }else{
-            return "Lab done, you've got "+grade+"/3";
+            return "Lab done, you've got "+ grade +"/3";
         }
     }
 }

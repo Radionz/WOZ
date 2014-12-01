@@ -34,11 +34,11 @@ public class LabRoom extends Room{
     /**
      * Check the answer
      * @param answer the answer
-     * @return if the answer is good or not
+     * @return if the answer is ggood or not
      */
     public String answerQuestion(String answer){
         String returned = "";
-        if(answer.equals(true))
+        if(answer.equals("true"))
             returned = lab.answerQuestion(true);
         else
             returned = lab.answerQuestion(false);
@@ -56,5 +56,9 @@ public class LabRoom extends Room{
      */
     public boolean isLabInProcess() {
         return labInProcess;
+    }
+
+    public Lab getLab(){
+        return this.lab;
     }
 }

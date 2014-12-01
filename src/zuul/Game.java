@@ -375,11 +375,14 @@ public class Game {
 			else
 				System.out.println("There is currently no exam or your answer in not correct ('true' or 'false')");
 		}else if((currentRoom instanceof LabRoom)){
-			if (((LabRoom) currentRoom).isLabInProcess() && (answer.equals("true") || answer.equals("false"))) {
-				System.out.println(((LabRoom) currentRoom).answerQuestion(answer));
-			}else
-				System.out.println("There is currently no lab exercise or your answer in not correct ('true' or 'false')");
-
+			if(!((LabRoom)currentRoom).getLab().getSuccess()){
+				if (((LabRoom) currentRoom).isLabInProcess() && (answer.equals("true") || answer.equals("false"))) {
+					System.out.println(((LabRoom) currentRoom).answerQuestion(answer));
+				}else
+					System.out.println("There is currently no exam or your answer in not correct ('true' or 'false')");
+			}else{
+				System.out.println("This lab session is over !");
+			}
 		}
 		else
 			System.out.println("You are not in the examroom");
