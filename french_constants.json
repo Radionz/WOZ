@@ -1,0 +1,17 @@
+{
+"outside_description":"outside the main entrance of the university",
+"classroom_description":"in the classroom",
+"examroom_description":"in the examroom",
+"labroom_description":"in the labroom",
+"library_description":"in the library",
+"lunchroom_description":"in the lunchroom",
+"corridor_description":"in the corridor",
+"theater_description":"in a lecture theater",
+"pub_description":"in the campus pub",
+"office_description":"in the computing admin office"
+}
+
+"items":[
+    {"name":"John", "energy":"Doe"}, 
+    {"name":"Anna", "energy":"Smith"}
+]

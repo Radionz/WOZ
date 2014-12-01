@@ -20,7 +20,7 @@ public abstract class IO {
 
 
     public enum PossibleFiles{
-        OTHER_LESSON("lesson_other.json"), POO_LESSON("lesson_poo.json"), POO_QUESTION("question_poo.json");
+        OTHER_LESSON("lesson_other.json"), POO_LESSON("lesson_poo.json"), POO_QUESTION("question_poo.json"), FRENCH_CONSTANTS("french_constants.json");
 
         private String value;
         PossibleFiles(String value){

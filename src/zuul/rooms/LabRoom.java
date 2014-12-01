@@ -20,7 +20,7 @@ public class LabRoom extends Room{
         labInProcess = false;
         actions.add("lab");
     }
-
+    
     /**
      * Dynamic methoc called
      * @return the question asked
@@ -38,11 +38,11 @@ public class LabRoom extends Room{
      */
     public String answerQuestion(String answer){
         String returned = "";
-        if(answer.equals(true))
+        if(answer.equals("true"))
             returned = lab.answerQuestion(true);
         else
             returned = lab.answerQuestion(false);
-
+        
         if (returned.startsWith("Lab done")) {
             labInProcess = false;
         }

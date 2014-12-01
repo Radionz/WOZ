@@ -5,14 +5,10 @@ import zuul.entities.items.Coffee;
 import zuul.entities.items.Item;
 import zuul.io.Command;
 import zuul.io.CommandWord;
-import zuul.io.IO;
 import zuul.io.Parser;
 import zuul.rooms.*;
 import zuul.studies.Lesson;
 import zuul.studies.Question;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
  * This class is the main class of the "World of Zuul" application.
@@ -253,6 +249,7 @@ public class Game {
 		if (!command.hasSecondWord()) {
 			// if there is no second word, we don't know where to go...
 			System.out.println("Go where?");
+			System.out.println(currentRoom.getExitString());
 			return;
 		}
 
