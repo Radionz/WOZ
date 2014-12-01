@@ -7,12 +7,16 @@ public class PaperLesson extends Item{
 
     private int number;
 
-    //TODO create a new PaperLesson when the lesson is over and add it to the players inventory
+    // create a new PaperLesson when the lesson is over and add it to the players inventory
     public PaperLesson(String name, int number){
         super(name);
         this.number = number;
     }
 
+    /**
+     * return the number
+     * @return
+     */
     public int getNumber() {
         return number;
     }
