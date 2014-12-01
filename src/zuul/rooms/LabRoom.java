@@ -43,7 +43,7 @@ public class LabRoom extends Room{
         else
             returned = lab.answerQuestion(false);
 
-        if (returned.startsWith("Exam done")) {
+        if (returned.startsWith("Lab done")) {
             labInProcess = false;
         }
         return returned;
