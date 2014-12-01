@@ -10,6 +10,7 @@ import zuul.io.CommandWord;
 import zuul.io.IO;
 import zuul.io.Parser;
 import zuul.rooms.*;
+import zuul.studies.Lab;
 import zuul.studies.Lesson;
 import zuul.studies.Question;
 
@@ -274,6 +275,18 @@ public class Game {
 			currentRoom = nextRoom;
 			System.out.println(currentRoom.getLongDescription());
 
+		}else if(currentRoom instanceof ClassRoom){
+			if(((ClassRoom)currentRoom).getLesson().isDone()){
+				((ClassRoom)currentRoom).setLesson(lessons[player.getCurrentPOOLevel()+1]);
+			}
+			currentRoom = nextRoom;
+			System.out.println(currentRoom.getLongDescription());
+		}else if(currentRoom instanceof LabRoom){
+			if(((LabRoom)currentRoom).getLab().getSuccess()){
+				((LabRoom)currentRoom).setLab(new Lab(Game.getPlayer().getCurrentPOOLevel()+1));//lessons[player.getCurrentPOOLevel() + 1]);
+			}
+			currentRoom = nextRoom;
+			System.out.println(currentRoom.getLongDescription());
 		}
 		else {
 			currentRoom = nextRoom;

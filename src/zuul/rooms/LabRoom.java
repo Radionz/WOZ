@@ -34,7 +34,7 @@ public class LabRoom extends Room{
     /**
      * Check the answer
      * @param answer the answer
-     * @return if the answer is ggood or not
+     * @return if the answer is good or not
      */
     public String answerQuestion(String answer){
         String returned = "";
@@ -61,4 +61,10 @@ public class LabRoom extends Room{
     public Lab getLab(){
         return this.lab;
     }
+
+    public void setLab(Lab lab){
+        actions.add("lab");
+        this.lab= lab;
+    }
+
 }

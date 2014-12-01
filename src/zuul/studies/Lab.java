@@ -31,7 +31,7 @@ public class Lab {
     }
 
     public void isSucceed(){
-        this.succeed= this.grade > 2;
+        this.succeed= (this.questionNum == 3);
     }
 
     public boolean getSuccess(){
