@@ -65,10 +65,10 @@ public class Question {
         }
         if(splits[1].equals("T")){
             this.answer = true;
-            System.out.println("True");
+            //System.out.println("true");
         }else if(splits[1].equals("F")){
             this.answer = false;
-            System.out.println("false");
+            //System.out.println("false");
         }else{
             System.out.println(splits[1]);
         }
