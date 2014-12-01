@@ -71,4 +71,20 @@ public class LabRoom extends Room{
         this.lab= lab;
     }
 
+    public Room getExit(String direction) {
+        if (lab.getSuccess() || actions.contains("lab")) {
+
+            Game.getPlayer().improveAbilities(lab);
+            Game.getPlayer().setCurrentPOOLevel(Game.getPlayer().getCurrentPOOLevel()+1);
+
+            if (!actions.contains("learn")) {
+                actions.add("learn");
+            }
+
+            actions.remove("nextSentence");
+            return exits.get(Exits.getAnExit(direction));
+        }
+        return null;
+    }
+
 }

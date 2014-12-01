@@ -271,9 +271,9 @@ public class Game {
 			System.out.println(currentRoom.getLongDescription());
 
 		}else if(currentRoom instanceof ClassRoom){
-			if(((ClassRoom)currentRoom).getLesson().isDone()){
+			/*if(((ClassRoom)currentRoom).getLesson().isDone()){
 				((ClassRoom)currentRoom).setLesson(lessons[player.getCurrentPOOLevel()+1]);
-			}
+			}*/
 			currentRoom = nextRoom;
 			System.out.println(currentRoom.getLongDescription());
 		}else if(currentRoom instanceof LabRoom){

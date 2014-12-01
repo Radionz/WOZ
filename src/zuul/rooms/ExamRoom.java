@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import zuul.Game;
 import zuul.rooms.Room.Exits;
 import zuul.studies.Exam;
+import zuul.studies.Lab;
 import zuul.studies.Question;
 
 /**
@@ -36,9 +37,18 @@ public class ExamRoom extends Room{
 	 * @return the question string
 	 */
     public String exam(){
-    	actions.remove("exam");
-    	examInProcess = true;
-		return exam.askQuestion();
+		if(Game.getPlayer().getKnowledges().size() >=5) {
+			boolean ok = false;
+			for(Lab l : Game.getPlayer().getAbilities()){
+
+			}
+			actions.remove("exam");
+			examInProcess = true;
+			return exam.askQuestion();
+		}else{
+			return "You can't pass the exam now, come back later !";
+		}
+
     }
 
 	/**
